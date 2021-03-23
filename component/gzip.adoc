@@ -1,0 +1,28 @@
+
+= gzip
+
+压缩
+[source,shell script]
+----
+gzip nginx.log
+----
+
+解压
+[source,shell script]
+----
+gzip -d nginx.log.gz
+----
+
+== 参数
+
+* -k
+
+    保留原文件
+
+* -d
+
+    解压
+
+* -l
+
+    查看压缩文档内文件

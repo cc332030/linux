@@ -1,0 +1,12 @@
+
+= windows wsl for alpine
+
+[source,shell script]
+----
+sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
+apk add openrc docker docker-compare
+
+mkdir -p /run/openrc
+touch /run/openrc/softlevel
+----

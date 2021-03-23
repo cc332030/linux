@@ -1,0 +1,64 @@
+
+= selinux
+
+状态
+
+- disabled
+
+    关闭
+
+- permissive
+
+    即使你违反了策略的话它让你继续操作，但是把你的违反的内容记录下来
+
+- enforcing
+
+    开启
+
+selinux对于被拒绝的操作是会记录在系统日志的，位置在/var/log/audit/audit.log    type为AVC，大括号里是操作类型，还有是否被拒绝、pid、安全上下文等等信息
+
+== 查看状态
+
+[source,shell script]
+----
+getenforce
+
+/usr/sbin/sestatus -v
+----
+
+
+=== 查看所有文件夹安全上下文
+
+[source,shell script]
+----
+semanage  fcontext  -l
+
+----
+
+
+== 设置
+
+设置SELinux 成为permissive模式
+[source,shell script]
+----
+setenforce 0
+
+----
+
+设置SELinux 成为enforcing模式
+[source,shell script]
+----
+setenforce 1
+
+----
+
+
+#永久关闭，将SELINUX=enforcing改为SELINUX=disabled
+
+[source,shell script]
+----
+vi /etc/selinux/config
+
+----
+
+

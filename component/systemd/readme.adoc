@@ -1,0 +1,11 @@
+
+= systemd
+
+
+== but it can still be activated by: docker.socket
+[source,shell script]
+----
+rm -f /lib/systemd/system/docker.service
+rm -f /lib/systemd/system/docker.socket
+
+----

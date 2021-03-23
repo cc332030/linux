@@ -1,0 +1,11 @@
+
+= scp
+
+== domo
+[source,shell script]
+----
+scp 1.tar 192.168.1.2:/home/work/
+
+scp -P 22 1.tar 192.168.1.2:/home/work/
+
+----

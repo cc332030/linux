@@ -1,0 +1,9 @@
+
+= journalctl
+
+[source,shell script]
+----
+# 最近的日志
+journalctl -xe
+
+----

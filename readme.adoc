@@ -1,0 +1,13 @@
+
+= linux
+
+查看版本
+[source,shell script]
+----
+
+uname -a
+
+cat /etc/centos-release
+cat /etc/redhat-release
+
+----

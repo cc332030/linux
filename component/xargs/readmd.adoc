@@ -1,0 +1,21 @@
+
+= xargs
+
+查找文件进行处理
+[source,shell script]
+----
+ls *.log.* | xargs -i gzip {}
+
+ls *.log.* | grep -v "gz" | xargs -i echo {}
+
+----
+
+== 参数
+
+* -i
+
+    前面的命令输出包含空格和换行时，分割分表填充进 {}
+
+* -d
+
+    指定分隔符

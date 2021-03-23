@@ -1,0 +1,29 @@
+
+= login_with_key
+
+vi /etc/ssh/sshd_config
+[source,text]
+----
+
+# centos 7.4+ 没有这个
+# RSAAuthentication yes
+
+# 启用 pubkey 登录
+PubkeyAuthentication yes
+
+# 指定受信任的 key
+AuthorizedKeysFile .ssh/authorized_keys
+
+# 禁用密码登录
+PasswordAuthentication no
+
+----
+
+导入收信人的 key
+[source,shell script]
+----
+cd ~/.ssh
+cat  id_rsa.pub >> authorized_keys
+
+systemctl restart sshd
+----

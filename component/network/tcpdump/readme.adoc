@@ -1,0 +1,8 @@
+
+= tcpdump
+
+[source,shell script]
+----
+dnf install -y tcpdump
+
+----

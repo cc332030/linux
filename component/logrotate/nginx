@@ -1,0 +1,15 @@
+/home/program/nginx/logs/*.log
+{
+  create 0664 nginx root
+  daily
+  rotate 15
+  dateext
+  missingok
+  notifempty
+  compress
+  delaycompress
+  sharedscripts
+  postrotate
+    docker exec -it nginx kill -USR1 `cat /home/program/nginx/logs/nginx.pid`
+  endscript
+}

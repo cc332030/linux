@@ -1,0 +1,8 @@
+
+= chmod
+
+[source,shell script]
+----
+chmod -R 755 dir
+
+----

@@ -1,0 +1,8 @@
+
+= dns
+
+[source,shell script]
+----
+dnf install -y dnsutils
+
+----

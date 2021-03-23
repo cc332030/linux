@@ -1,0 +1,41 @@
+
+= ls 遍历
+
+== example
+
+列出并排除文件，然后操作文件
+[source,shell script]
+----
+ls *.log.* | grep -v "gz" | xargs gzip {}
+
+----
+
+== 参数
+
+* -l
+
+    竖排显示
+
+* -h
+
+    大小使用合适的单位
+
+* --group-directories-first
+
+    文件夹优先
+
+* -t
+
+    按时间排序，降序
+
+* -r
+
+    顺序反转
+
+* -X
+
+    按扩展名分组
+
+* -Z
+
+    显示文件安全上下文

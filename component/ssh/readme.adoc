@@ -1,0 +1,21 @@
+
+= ssh
+
+启用 ssh
+
+[source,shell script]
+----
+yum install openssh-server
+----
+
+SSH登录要很久
+UseDNS no
+
+[source,shell script]
+----
+/etc/ssh/sshd_config
+
+service sshd restart
+
+/etc/init.d/sshd restart
+----

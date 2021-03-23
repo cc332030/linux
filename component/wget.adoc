@@ -1,0 +1,66 @@
+= wget
+
+[source,shell script]
+----
+
+url=https://docs.spring.io/spring/docs/5.2.8.RELEASE/spring-framework-reference/
+
+wget -c -r -p -np -k -E $url
+
+wget -m -e robots=off -k -E $url
+
+----
+
+== 参数
+
+- -P
+
+    指定下载的文件存储文件路径
+
+- -O
+
+    指定下载的文件存储文件路径及文件名
+
+- -c
+
+    断点续传
+
+- -r
+
+    递归下载
+
+- -np
+
+    递归下载时不搜索上层目录
+
+- -nd
+
+    递归下载时不创建一层一层的目录,把所有文件下载当前文件夹中
+
+- -p
+
+    下载网页所需要的所有文件(图片,样式,js文件等)
+
+- -H
+
+    当递归时是转到外部主机下载图片或链接
+
+- -k
+
+    将绝对链接转换为相对链接,这样就可以在本地脱机浏览网页了
+
+- -m
+
+    镜像，就是整站抓取
+
+- -e robots=off
+
+    忽略robots协议，强制、流氓抓取
+
+- -E
+
+    将所有text/html文档以.html扩展名保存
+
+- --content-disposition
+
+    使用 Content-Disposition 报文头指定的文件名

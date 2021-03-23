@@ -1,0 +1,36 @@
+
+= network settings
+
+== 固定 ip
+
+[source,shell script]
+----
+cd /etc/sysconfig/network-scripts;ll
+
+vi ifcfg-enp4s0
+
+----
+
+[source,text]
+----
+# BOOTPROTO="dhcp"
+BOOTPROTO="static"
+
+IPADDR=192.168.1.3
+GATEWAY=192.168.1.1
+DNS1=119.29.29.29
+DNS2=223.5.5.5
+
+# DNS1=1.1.1.1
+# DNS2=8.8.8.8
+
+----
+
+== 修改 dns
+
+会被上一个脚本覆盖
+[source,shell script]
+----
+vi /etc/resolv.conf
+
+----

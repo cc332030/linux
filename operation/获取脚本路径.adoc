@@ -1,0 +1,19 @@
+
+= 获取脚本路径
+
+绝对路径
+
+[source,shell script]
+----
+script_abs=$(readlink -f "$0")
+
+----
+
+
+绝对/相对路径（取决于脚本执行使用的路径）
+
+[source,shell script]
+----
+script_dir=$(dirname $script_abs)
+
+----

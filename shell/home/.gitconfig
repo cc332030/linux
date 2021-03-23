@@ -1,0 +1,17 @@
+[user]
+  name = c332030
+  email = c332030@gmail.com
+[core]
+  # 不转换换行符
+  autocrlf = false
+  safecrlf = true
+  # 忽略换行符变更
+  whitespace = cr-at-eol
+
+# 不允许 pull 时 rebase
+[pull]
+  rebase = false
+
+# 递归操作子项目
+[submodule]
+  recurse = true

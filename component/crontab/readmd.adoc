@@ -1,0 +1,14 @@
+
+= crontab
+
+== new
+
+[source,shell script]
+----
+crontab -e
+
+# 输入内容保存退出，任务保存在 /var/spool/cron/
+
+
+service crond restart
+----

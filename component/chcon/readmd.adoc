@@ -1,0 +1,10 @@
+
+= chcon
+
+修改对象（文件）的安全上下文，比如：用户、角色、类型、安全级别
+
+修改日志文件夹
+[source,shell script]
+----
+chcon -Rv --type=var_log_t /home/program/nginx/logs
+----

@@ -1,0 +1,29 @@
+
+= ntp
+
+[source,shell script]
+----
+yum install ntp -y
+
+ntpq -p
+----
+
+centos7
+[source,shell script]
+----
+systemctl enable ntpd
+systemctl start ntpd
+
+timedatectl set-timezone Asia/Shanghai
+timedatectl set-ntp yes
+
+----
+
+
+centos6
+[source,shell script]
+----
+chkconfig ntpd on
+service ntpd start
+
+----

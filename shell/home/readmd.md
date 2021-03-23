@@ -1,0 +1,7 @@
+
+# home
+
+.bashrc
+```shell script
+
+```

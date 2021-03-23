@@ -1,0 +1,15 @@
+
+= chrony
+
+用于替换 ntp （centos8+）
+
+/etc/chrony.conf
+
+ntp.aliyun.com
+
+[source,shell script]
+----
+systemctl enable chronyd
+systemctl start chronyd
+
+----

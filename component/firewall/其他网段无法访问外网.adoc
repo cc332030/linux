@@ -1,0 +1,19 @@
+
+= 其他网段无法访问外网
+
+开启封包转发，例子见 docker
+
+[source,shell script]
+----
+
+# 临时
+# sysctl -w net.ipv4.ip_forward=1
+
+echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+sysctl -p /etc/sysctl.conf
+
+# iptables 和 firewall 二选一
+# iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+# firewall-cmd --permanent --zone=drop --add-masquerade
+
+----

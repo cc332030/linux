@@ -1,0 +1,14 @@
+#/etc/grub.d
+#/etc/default/grub
+
+#/boot/grub/grub.cfg
+
+
+sudo gedit /etc/default/grub
+sudo update-grub
+
+
+PS：
+当 /etc/default/grub 中设置 timeout = 0 时，
+/etc/grub.d/30_os-prober
+中重新定义 timeout = 10

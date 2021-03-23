@@ -1,0 +1,46 @@
+
+= centos 安装
+
+排除可能导致无法启动的包
+[source,shell script]
+----
+vi
+
+echo 'exclude=shim,mokutil' >> /etc/dnf.conf
+
+echo 'LANG=en_US.utf-8' > /etc/environment
+echo 'LC_ALL=en_US.utf-8'  >> /etc/environment
+
+# timedatectl show
+# timedatectl list-timezones
+timedatectl set-timezone Asia/Hong_Kong
+echo "Asia/Hong_Kong" > /etc/timezone
+
+dnf install -y epel-release
+
+dnf install -y \
+  tar bzip2 p7zip p7zip-plugins mlocate \
+  wget lrzsz bind-utils telnet \
+  iotop iftop
+
+systemctl enable firewalld
+systemctl start firewalld
+
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --zone=public --add-port=443/tcp --permanent
+firewall-cmd --zone=public --add-port=22/tcp --permanent
+
+vi /etc/passwd
+# /home
+
+# selinux
+vi /etc/selinux/config
+
+swapon /home/.swap
+vi /etc/fstab
+# /home/.swap swap swap defaults 0 0
+
+reboot
+
+----
+

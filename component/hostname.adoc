@@ -1,0 +1,12 @@
+
+= hostname
+
+[source,shell script]
+----
+# 显示
+hostnamectl
+
+# 设置
+hostnamectl set-hostname c332030.com
+
+----

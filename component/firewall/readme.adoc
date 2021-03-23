@@ -1,0 +1,63 @@
+
+= firewall
+
+== 查看配置
+[source,shell script]
+----
+
+# 当前激活的 zone
+firewall-cmd --get-default-zone
+
+# 当前生效的配置
+firewall-cmd --get-active-zones
+
+# 当前所有 zone 详情
+firewall-cmd --list-all-zones
+
+# 全部可用 zone
+firewall-cmd --get-zones
+# block dmz drop external home internal public trusted work
+
+# zone 信息
+firewall-cmd --zone=trusted --list-all
+
+# firewall-cmd --zone=trusted --list-sources
+# firewall-cmd --zone=trusted --remove-source=172.17.0.0/16 --permanent
+
+# 信任 ssh 服务
+# firewall-cmd --permanent --zone=trusted --add-service=ssh
+
+firewall-cmd --reload
+
+----
+
+== 白名单模式
+
+[source, shell script]
+----
+
+# 端口开放
+# firewall-cmd --zone=trusted --query-port=22/tcp
+
+# 端口限制对白名单 ip 失效，可访问所有端口
+# firewall-cmd --zone=trusted --add-port=80/tcp --permanent
+# firewall-cmd --zone=trusted --add-port=443/tcp --permanent
+
+# ip 开放
+firewall-cmd --zone=trusted --add-source=192.168.1.1 --permanent
+
+# 开放指定 ip 访问指定端口
+firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.1.1" port protocol="tcp" port="80" accept"
+
+# 无视所有接入连接
+default_zone=drop
+
+firewall-cmd --set-default-zone=${default_zone}
+
+# 默认网卡 eth0 分配给 drop 区域
+firewall-cmd --permanent --zone=${default_zone} --change-interface=enp4s0
+
+# 开启封包转发
+firewall-cmd --permanent --zone=drop --add-masquerade
+
+----

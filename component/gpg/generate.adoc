@@ -1,0 +1,44 @@
+
+= gpg
+
+[source,shell script]
+----
+
+# 生成
+gpg --full-gen-key
+# gpg --gen-key 不能设置有效期
+
+# 列出私钥
+gpg -K
+
+# 列出公钥
+gpg -k
+
+# 导出公钥
+gpg -a -o public.key --export keyid
+
+# 导出公钥
+gpg -a -o private.key --export-secret-keys keyid
+
+# 导入
+gpg --import public-file.key / private-file.key
+
+# 撤销证书
+gpg --gen-revoke keyid
+
+# 生成指纹
+gpg --fingerprint keyid
+
+# 上传公钥
+gpg --keyserver hkp://keyserver.ubuntu.com --send-keys keyid
+
+# 删除
+gpg --delete-secret-keys
+gpg --delete-keys keyId
+
+# 生成子密钥
+gpg --edit-key 'key'
+
+> addkey
+
+----

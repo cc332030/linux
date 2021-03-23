@@ -1,0 +1,25 @@
+
+= linux time
+
+[source,shell script]
+----
+
+timedatectl
+
+timedatectl show
+
+timedatectl list-timezones
+
+timedatectl set-timezone Asia/Hong_Kong
+
+# 部分应用如 tomcat 使用
+echo "Asia/Hong_Kong" > /etc/timezone
+
+----
+
+其他可选设置
+[source,shell script]
+----
+
+timedatectl set-time "YYYY-MM-DD HH:MM:SS"
+----

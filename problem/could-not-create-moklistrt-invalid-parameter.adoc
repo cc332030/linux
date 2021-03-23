@@ -1,0 +1,10 @@
+
+= could not create mokListRT invalid parameter
+
+U盘启动救援模式
+
+chroot /mnt/sysimage
+cd /boot/efi/EFI/centos
+cp grubx64.efi shimx64.efi
+exit
+reboot

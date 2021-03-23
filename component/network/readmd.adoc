@@ -1,0 +1,13 @@
+
+= network
+
+[source,shell script]
+----
+nslookup c332030.com
+
+dig c332030.com
+
+# 查看ip
+curl cip.cc
+
+----

@@ -1,0 +1,12 @@
+
+= systemd override
+
+/etc/systemd/system/docker.service.d/override.conf
+
+[source,text]
+----
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd --containerd=/run/containerd/containerd.sock
+
+----

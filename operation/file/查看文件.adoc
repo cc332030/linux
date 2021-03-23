@@ -1,0 +1,32 @@
+
+= 文件截取
+
+
+按行开头截取
+[source,shell script]
+----
+#
+sed -n  '/^2012-02-09/,/^2012-09-10/p' whole.log > part.log
+
+# 假设日志文件以yyyy-MM-dd的日期格式开头
+sed -n '/^2012-02-09/,/^2012-09-10/p' whole.log > part.log
+
+----
+
+匹配导出
+[source,shell script]
+----
+log_file_name=debug.log
+
+# 查看 8 点到 9 点的日志
+awk '$2 ~ /\[0[8-9]:00:00/' log4j/${log_file_name} > ${log_file_name}
+
+----
+
+截取最后几行
+[source,shell script]
+----
+log_file_name=debug.log
+tail -n 100000 log4j/${log_file_name} > ${log_file_name}
+
+----

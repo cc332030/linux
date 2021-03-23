@@ -1,0 +1,13 @@
+
+= du
+
+[source,shell script]
+----
+# 当前目录及子目录占用空间，指定深度
+du -h -d 1
+du -h --max-depth=1
+
+# 指定目录占用空间，默认当前目录
+du -sch
+
+----

@@ -1,0 +1,9 @@
+
+= service
+
+查询自启
+[source,shell script]
+----
+chkconfig --list
+
+----

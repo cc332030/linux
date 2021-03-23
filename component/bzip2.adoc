@@ -1,0 +1,31 @@
+
+= bzip2
+
+
+压缩
+[source,shell script]
+----
+bzip2 nginx.log
+----
+
+解压
+[source,shell script]
+----
+bzip2 -d nginx.log.bz2
+
+bunzip2 -d nginx.log.bz2
+----
+
+== 参数
+
+* -k
+
+    保留原文件
+
+* -d
+
+    解压
+
+* -l
+
+    查看压缩文档内文件

@@ -1,0 +1,16 @@
+
+= generate ssh key
+
+[source, shell script]
+----
+# 按三次回车
+ssh-keygen -t rsa -C "c332030"
+
+# 显示公钥
+cat ~/.ssh/id_rsa.pub
+
+# 测试
+ssh -T git@gitee.com
+ssh -T git@github.com
+
+----

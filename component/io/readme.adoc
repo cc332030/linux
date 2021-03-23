@@ -1,0 +1,4 @@
+
+= unix io
+
+image::.readme_images/io.jpg[IO模型]
