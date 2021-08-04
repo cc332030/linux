@@ -1,0 +1,9 @@
+
+= 内核
+
+删除多余内核
+[source,shell script]
+----
+rpm -qa | grep kernel | grep -v $(uname -r) | xargs dnf remove -y
+
+----
