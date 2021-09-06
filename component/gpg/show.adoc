@@ -1,0 +1,13 @@
+
+= gpg show
+
+[source,shell script]
+----
+# 列出
+gpg -k
+
+# 列出，gradle only support short
+gpg --list-keys --keyid-format=long
+gpg --list-keys --keyid-format=short
+
+----

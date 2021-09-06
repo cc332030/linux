@@ -15,4 +15,7 @@ gpg -a -o private-$keyid.key --export-secret-keys $keyid
 # 导出 subkey
 gpg -a -o private-sub-$keyid.key --export-secret-subkeys $keyid!
 
+# export secring.gpg
+gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
+
 ----

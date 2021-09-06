@@ -1,0 +1,9 @@
+
+= gpg import
+
+[source,shell script]
+----
+# 导入
+gpg --import public-file.key / private-file.key
+
+----
