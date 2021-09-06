@@ -1,0 +1,7 @@
+
+= gpp
+
+sec => 'secret key' +
+ssb => 'secret SubKey' +
+pub => 'public key' +
+sub => 'public SubKey' +
