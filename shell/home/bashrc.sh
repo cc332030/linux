@@ -12,6 +12,8 @@ alias lll='ls --color=auto -lhtr  --group-directories-first'
 
 alias less='less -n'
 
+alias tailf='tail -f'
+
 alias wget='wget --content-disposition'
 alias curl='curl -L'
 
