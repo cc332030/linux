@@ -23,5 +23,5 @@ Host *
 
 ID_RSA=$SSH_PATH/id_rsa
 echo "$SSH_PRIVATE_KEY" > $ID_RSA
-chmod $_USER $ID_RSA
+chown $_USER $ID_RSA
 chmod 600 $ID_RSA
