@@ -1,0 +1,9 @@
+
+= INIT_SSH
+
+[source,shell script]
+----
+curl -O https://raw.githubusercontent.com/cc332030/linux/master/script/init-ssh-pre.sh && sudo sh init-ssh-pre.sh
+curl -O https://raw.githubusercontent.com/cc332030/linux/master/script/init-ssh.sh && sh init-ssh.sh
+
+----
