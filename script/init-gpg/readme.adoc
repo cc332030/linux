@@ -1,0 +1,22 @@
+
+= INIT_GPG
+
+[source,shell script]
+----
+curl -s -O https://raw.githubusercontent.com/cc332030/gradle/master/script/init-gpg/init-gpg.sh && sh init-gpg.sh
+
+----
+
+[source,yml]
+----
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: init gnupg
+        run: ${{ secrets.INIT_GPG }}
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
+
+----
