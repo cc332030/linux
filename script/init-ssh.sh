@@ -2,26 +2,14 @@
 
 set -e
 
-mkdir -p /etc/ssh
-echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
-
-_USER=$1
-
-if [ "$_USER" ]; then
-  USER_HOME=$(eval echo ~$_USER)
-else
-  USER_HOME=~
-fi
-
-SSH_PATH=$USER_HOME/.ssh
+SSH_PATH=~/.ssh
 mkdir -p $SSH_PATH
 
 echo "
 Host *
     ConnectTimeout 10
 " >> $SSH_PATH/config
+chmod 600 $SSH_PATH/config
 
-ID_RSA=$SSH_PATH/id_rsa
-echo "$SSH_PRIVATE_KEY" > $ID_RSA
-chown $_USER $ID_RSA
-chmod 600 $ID_RSA
+echo "$SSH_PRIVATE_KEY" > $SSH_PATH/id_rsa
+chmod 600 $SSH_PATH/id_rsa
