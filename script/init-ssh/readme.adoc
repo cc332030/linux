@@ -7,3 +7,16 @@ curl -s -O https://raw.githubusercontent.com/cc332030/linux/master/script/init-s
 curl -s -O https://raw.githubusercontent.com/cc332030/linux/master/script/init-ssh/init-ssh.sh && sh init-ssh.sh
 
 ----
+
+[source,yml]
+----
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: init ssh
+        run: ${{ secrets.INIT_SSH }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+----
