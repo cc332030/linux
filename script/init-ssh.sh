@@ -5,7 +5,13 @@ set -e
 mkdir -p /etc/ssh
 echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
-SSH_PATH=~/.ssh
+USER_HOME=$1
+
+if [ ! "$USER_HOME" ]; then
+  USER_HOME=~
+fi
+
+SSH_PATH=$USER_HOME/.ssh
 mkdir -p $SSH_PATH
 
 echo "
