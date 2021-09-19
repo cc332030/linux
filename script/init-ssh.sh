@@ -5,6 +5,8 @@ set -e
 SSH_PATH=~/.ssh
 mkdir -p $SSH_PATH
 
+echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+
 echo "
 Host *
     ConnectTimeout 10
