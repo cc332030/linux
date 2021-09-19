@@ -5,9 +5,11 @@ set -e
 mkdir -p /etc/ssh
 echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
-USER_HOME=$1
+_USER=$1
 
-if [ ! "$USER_HOME" ]; then
+if [ "$_USER" ]; then
+  USER_HOME=$(eval echo ~$_USER)
+else
   USER_HOME=~
 fi
 
@@ -20,6 +22,6 @@ Host *
 " >> $SSH_PATH/config
 
 ID_RSA=$SSH_PATH/id_rsa
-echo "$SSH_PRIVATE_KEY"
 echo "$SSH_PRIVATE_KEY" > $ID_RSA
+chmod _USER $ID_RSA
 chmod 600 $ID_RSA
