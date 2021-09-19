@@ -2,10 +2,10 @@
 
 set -e
 
+sudo mkdir -p /etc/ssh && echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+
 SSH_PATH=~/.ssh
 mkdir -p $SSH_PATH
-
-echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 echo "
 Host *
