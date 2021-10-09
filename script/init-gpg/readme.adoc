@@ -3,7 +3,7 @@
 
 [source,shell script]
 ----
-curl -s -O https://raw.githubusercontent.com/cc332030/linux/master/script/init-gpg/init-gpg.sh && sh init-gpg.sh
+curl -sL https://github.com/cc332030/linux/raw/master/script/init-gpg/init-gpg.sh | sh
 
 ----
 

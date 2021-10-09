@@ -3,8 +3,8 @@
 
 [source,shell script]
 ----
-curl -s -O https://raw.githubusercontent.com/cc332030/linux/master/script/init-ssh/init-ssh-pre.sh && sudo sh init-ssh-pre.sh
-curl -s -O https://raw.githubusercontent.com/cc332030/linux/master/script/init-ssh/init-ssh.sh && sh init-ssh.sh
+curl -sL https://github.com/cc332030/linux/raw/master/script/init-ssh/init-ssh-pre | sh
+curl -sL https://github.com/cc332030/linux/raw/master/script/init-ssh/init-ssh.sh | sh
 
 ----
 
