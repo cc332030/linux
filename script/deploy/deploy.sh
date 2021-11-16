@@ -68,7 +68,7 @@ SSH="ssh ${SSH_ARGS} -p ${PORT} ${HOST}"
 # ---------------------------------------------
 
 # execute command in remote
-${SSH} sh -c "
+${SSH} "
 
 # ls remote file
 echo
