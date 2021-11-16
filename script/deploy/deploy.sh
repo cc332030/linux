@@ -52,7 +52,15 @@ if [ ! "${ACTION_COMMAND}" ]; then
   exit 1
 fi
 
+# tmp path
+TMP_PATH="/tmp/deploy-$(date '+%Y%m%d-%H%M%S')"
+echo "
+TMP_PATH: ${TMP_PATH}"
+TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
+
 # ls file
+echo"
+ls ORIGIN_PATH"
 ls -lh "${ORIGIN_PATH}"
 
 # compress if dir
@@ -65,11 +73,8 @@ else
   IS_DIR=false
 fi
 
-# tmp path
-TMP_PATH="/tmp/deploy-$(date '+%Y%m%d-%H%M%S')"
 echo "
-TMP_PATH: ${TMP_PATH}"
-TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
+IS_DIR: ${IS_DIR}"
 
 SSH_ARGS="-o LogLevel=ERROR"
 rsync -e "ssh ${SSH_ARGS} -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}/"
@@ -84,11 +89,14 @@ ${SSH} "
 set -e
 
 # ls remote file
-echo
+echo '
+ls TMP_PATH'
 ls -lh \"${TMP_PATH}\"
 
 # execute prepare command
 if [ \"${PREPARE_COMMAND}\" ]; then
+  echo
+  echo 'execute PREPARE_COMMAND'
   ${PREPARE_COMMAND}
 fi
 
@@ -112,6 +120,8 @@ rm -rf \"${TMP_PATH}\"
 echo
 ls -lh \"${REMOTE_PATH}\"
 
+echo '
+execute ACTION_COMMAND'
 ${ACTION_COMMAND}
 
 "
