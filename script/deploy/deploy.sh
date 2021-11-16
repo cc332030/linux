@@ -55,12 +55,13 @@ fi
 ls -lh "${ORIGIN_PATH}"
 
 # compress if dir
-IS_DIR=false
 if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
   NEW_PATH="origin.tar.gz"
   tar -zcf "${NEW_PATH}" -C "${ORIGIN_PATH}" .
   ORIGIN_PATH=NEW_PATH
+else
+  IS_DIR=false
 fi
 
 # tmp path
