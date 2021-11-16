@@ -64,6 +64,8 @@ TMP_PATH: ${TMP_PATH}
 TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
 
 # send file
+echo "rsync -e ssh -p ${PORT} ${ORIGIN_PATH} root@${HOST}:${TMP_PATH}"
+
 rsync -e "ssh -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}"
 
 # command
