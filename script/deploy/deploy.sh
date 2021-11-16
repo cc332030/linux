@@ -4,8 +4,8 @@ set -e
 
 if [ "${GITHUB_REPOSITORY}" ]; then
   REPOSITORY_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d / -f 2 | xargs -I {} basename {} .git)
-  echo "
-  REPOSITORY_NAME: ${REPOSITORY_NAME}"
+  echo
+  echo "REPOSITORY_NAME: ${REPOSITORY_NAME}"
 fi
 
 # shellcheck disable=SC2016
