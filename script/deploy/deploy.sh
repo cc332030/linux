@@ -2,10 +2,11 @@
 
 set -e
 
-REPOSITORY_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d / -f 2 | xargs -I {} basename {} .git)
-echo "
-REPOSITORY_NAME: ${REPOSITORY_NAME}
-"
+if [ "${GITHUB_REPOSITORY}" ]; then
+  REPOSITORY_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d / -f 2 | xargs -I {} basename {} .git)
+  echo "
+  REPOSITORY_NAME: ${REPOSITORY_NAME}"
+fi
 
 # shellcheck disable=SC2016
 ORIGIN_PATH=$(printf '%s' "${ORIGIN_PATH}" | sed -e "s@\${REPOSITORY_NAME}@${REPOSITORY_NAME}@g")
@@ -17,8 +18,7 @@ echo "
 ORIGIN_PATH: ${ORIGIN_PATH}
 REMOTE_PATH: ${REMOTE_PATH}
 PREPARE_COMMAND: ${PREPARE_COMMAND}
-ACTION_COMMAND: ${ACTION_COMMAND}
-"
+ACTION_COMMAND: ${ACTION_COMMAND}"
 
 # check parameter
 if [ ! "${HOST}" ]; then
@@ -65,8 +65,7 @@ fi
 # tmp path
 TMP_PATH="/tmp/deploy-$(date '+%Y%m%d-%H%M%S')"
 echo "
-TMP_PATH: ${TMP_PATH}
-"
+TMP_PATH: ${TMP_PATH}"
 TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
 
 SSH_ARGS="-o LogLevel=ERROR"
