@@ -2,17 +2,11 @@
 
 set -e
 
-BASE_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d / -f 2 | xargs -I {} basename {} .git)
-echo "
-BASE_NAME: ${BASE_NAME}
-"
-
 echo "
 ORIGIN_PATH: ${ORIGIN_PATH}
 REMOTE_PATH: ${REMOTE_PATH}
 PREPARE_COMMAND: ${PREPARE_COMMAND}
-ACTION_COMMAND: ${ACTION_COMMAND}
-"
+ACTION_COMMAND: ${ACTION_COMMAND}"
 
 # check parameter
 if [ ! "${HOST}" ]; then
