@@ -6,7 +6,8 @@ echo "
 ORIGIN_PATH: ${ORIGIN_PATH}
 REMOTE_PATH: ${REMOTE_PATH}
 PREPARE_COMMAND: ${PREPARE_COMMAND}
-ACTION_COMMAND: ${ACTION_COMMAND}"
+ACTION_COMMAND: ${ACTION_COMMAND}
+"
 
 # check parameter
 if [ ! "${HOST}" ]; then
@@ -51,19 +52,16 @@ if [ -d "${ORIGIN_PATH}" ]; then
 fi
 
 # tmp path
-TMP_PATH="/tmp/deploy/$(date '+%Y%m%d-%H%M%S')"
+TMP_PATH="/tmp/deploy-$(date '+%Y%m%d-%H%M%S')"
 echo "
 TMP_PATH: ${TMP_PATH}
 "
 TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
 
-# send file
-echo "rsync -e ssh -p ${PORT} ${ORIGIN_PATH} root@${HOST}:${TMP_PATH}"
-
-rsync -e "ssh -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}"
+SSH_ARGS="-o LogLevel=ERROR"
+rsync -e "ssh ${SSH_ARGS} -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}"
 
 # command
-SSH_ARGS="-o LogLevel=ERROR"
 SSH="ssh ${SSH_ARGS} -p ${PORT} ${HOST}"
 
 
