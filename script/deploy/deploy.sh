@@ -47,11 +47,6 @@ if [ ! "${REMOTE_PATH}" ]; then
 fi
 REMOTE_PARENT_PATH=$(pwd "${REMOTE_PATH}")
 
-if [ ! "${ACTION_COMMAND}" ]; then
-  echo ACTION_COMMAND not exists
-  exit 1
-fi
-
 # tmp path
 TMP_PATH="/tmp/deploy-$(date '+%Y%m%d-%H%M%S')"
 echo "
