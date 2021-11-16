@@ -77,6 +77,8 @@ rsync -e "ssh ${SSH_ARGS} -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}
 # command
 SSH="ssh ${SSH_ARGS} -p ${PORT} root@${HOST}"
 
+REMOTE_PARENT_PATH=$(pwd "${REMOTE_PATH}")
+
 # execute command in remote
 ${SSH} "
 
@@ -101,7 +103,7 @@ if ${IS_DIR}; then
   mkdir -p \"${REMOTE_PATH}\"
   tar -zxf \"${TMP_FILE}\" -C \"${REMOTE_PATH}\"
 else
-  mkdir -p $(pwd "${REMOTE_PATH}")
+  mkdir -p \"${REMOTE_PARENT_PATH}\"
   mv \"${TMP_FILE}\" \"${REMOTE_PATH}\"
 fi
 
