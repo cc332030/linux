@@ -63,7 +63,7 @@ if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
   NEW_PATH="origin.tar.gz"
   tar -zcf "${NEW_PATH}" -C "${ORIGIN_PATH}" .
-  ORIGIN_PATH=NEW_PATH
+  ORIGIN_PATH="${NEW_PATH}"
 else
   IS_DIR=false
 fi
