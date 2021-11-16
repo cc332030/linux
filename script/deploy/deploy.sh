@@ -78,6 +78,43 @@ rsync -e "ssh ${SSH_ARGS} -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}
 SSH="ssh ${SSH_ARGS} -p ${PORT} root@${HOST}"
 
 # execute command in remote
+
+echo "
+
+     set -e
+
+     # ls remote file
+     echo
+     ls -lh \"${TMP_PATH}\"
+
+     # execute prepare command
+     if [ \"${PREPARE_COMMAND}\" ]; then
+       ${PREPARE_COMMAND}
+     fi
+
+     if [ -e \"${REMOTE_PATH}\" ];then
+       rm -rf \"${REMOTE_PATH}-bak\"
+       mv \"${REMOTE_PATH}\" \"${REMOTE_PATH}-bak\"
+       mkdir -p ${REMOTE_PATH}
+     fi
+
+     if ${IS_DIR}; then
+       mkdir -p \"${REMOTE_PATH}\"
+       tar -zxf \"${TMP_FILE}\" -C \"${REMOTE_PATH}\"
+     else
+       mkdir -p $(pwd "${REMOTE_PATH}")
+       mv \"${TMP_FILE}\" \"${REMOTE_PATH}\"
+     fi
+
+     # ls remote path
+     echo
+     ls -lh \"${REMOTE_PATH}\"
+
+     rm -rf \"${TMP_PATH}\"
+
+     "
+
+
 ${SSH} "
 
 set -e
