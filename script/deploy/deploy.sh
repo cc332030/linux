@@ -45,6 +45,7 @@ if [ ! "${REMOTE_PATH}" ]; then
   echo REMOTE_PATH not exists
   exit 1
 fi
+REMOTE_PARENT_PATH=$(pwd "${REMOTE_PATH}")
 
 if [ ! "${ACTION_COMMAND}" ]; then
   echo ACTION_COMMAND not exists
@@ -76,8 +77,6 @@ rsync -e "ssh ${SSH_ARGS} -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}
 # ---------------------------------------------
 # command
 SSH="ssh ${SSH_ARGS} -p ${PORT} root@${HOST}"
-
-REMOTE_PARENT_PATH=$(pwd "${REMOTE_PATH}")
 
 # execute command in remote
 ${SSH} "
