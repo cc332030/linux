@@ -95,7 +95,6 @@ fi
 if [ -e \"${REMOTE_PATH}\" ];then
   rm -rf \"${REMOTE_PATH}-bak\"
   mv \"${REMOTE_PATH}\" \"${REMOTE_PATH}-bak\"
-  mkdir -p ${REMOTE_PATH}
 fi
 
 if ${IS_DIR}; then
