@@ -54,7 +54,7 @@ TMP_PATH: ${TMP_PATH}"
 TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
 
 # ls file
-echo"
+echo "
 ls ORIGIN_PATH"
 ls -lh "${ORIGIN_PATH}"
 
