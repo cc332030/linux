@@ -55,6 +55,7 @@ fi
 ls -lh "${ORIGIN_PATH}"
 
 # compress if dir
+IS_DIR=false
 if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
   NEW_PATH="origin.tar.gz"
