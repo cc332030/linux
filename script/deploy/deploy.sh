@@ -36,7 +36,7 @@ if [ ! "${ORIGIN_PATH}" ]; then
   exit 1
 fi
 
-if [ ! "${ORIGIN_PATH}" ]; then
+if [ ! -e "${ORIGIN_PATH}" ]; then
   echo "${ORIGIN_PATH} not exists"
   exit 1
 fi
