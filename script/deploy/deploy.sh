@@ -61,11 +61,9 @@ TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
 SSH_ARGS="-o LogLevel=ERROR"
 rsync -e "ssh ${SSH_ARGS} -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}/"
 
-# command
-SSH="ssh ${SSH_ARGS} -p ${PORT} ${HOST}"
-
-
 # ---------------------------------------------
+# command
+SSH="ssh ${SSH_ARGS} -p ${PORT} root@${HOST}"
 
 # execute command in remote
 ${SSH} "
