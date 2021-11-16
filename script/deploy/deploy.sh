@@ -110,8 +110,8 @@ fi
 # clean
 rm -rf \"${TMP_PATH}\"
 
-# ls remote path
-echo
+echo '
+ls REMOTE_PATH'
 ls -lh \"${REMOTE_PATH}\"
 
 if [ \"${ACTION_COMMAND}\" ]; then
