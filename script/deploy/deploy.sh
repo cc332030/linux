@@ -80,6 +80,8 @@ SSH="ssh ${SSH_ARGS} -p ${PORT} root@${HOST}"
 # execute command in remote
 ${SSH} "
 
+set -e
+
 # ls remote file
 echo
 ls -lh \"${TMP_PATH}\"
@@ -107,5 +109,6 @@ fi
 echo
 ls -lh \"${REMOTE_PATH}\"
 
+rm -rf \"${TMP_PATH}\"
 
 "
