@@ -59,7 +59,7 @@ TMP_PATH: ${TMP_PATH}
 TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
 
 SSH_ARGS="-o LogLevel=ERROR"
-rsync -e "ssh ${SSH_ARGS} -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}"
+rsync -e "ssh ${SSH_ARGS} -p ${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}/"
 
 # command
 SSH="ssh ${SSH_ARGS} -p ${PORT} ${HOST}"
