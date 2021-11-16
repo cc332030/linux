@@ -93,7 +93,6 @@ echo '
 ls TMP_PATH'
 ls -lh \"${TMP_PATH}\"
 
-# execute prepare command
 if [ \"${PREPARE_COMMAND}\" ]; then
   echo
   echo 'execute PREPARE_COMMAND'
@@ -120,8 +119,10 @@ rm -rf \"${TMP_PATH}\"
 echo
 ls -lh \"${REMOTE_PATH}\"
 
-echo '
-execute ACTION_COMMAND'
-${ACTION_COMMAND}
+if [ \"${ACTION_COMMAND}\" ]; then
+  echo
+  echo 'execute ACTION_COMMAND'
+  ${ACTION_COMMAND}
+fi
 
 "
