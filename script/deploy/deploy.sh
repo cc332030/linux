@@ -51,7 +51,6 @@ REMOTE_PARENT_PATH=$(pwd "${REMOTE_PATH}")
 TMP_PATH="/tmp/deploy-$(date '+%Y%m%d-%H%M%S')"
 echo "
 TMP_PATH: ${TMP_PATH}"
-TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
 
 # ls file
 echo "
@@ -67,6 +66,7 @@ if [ -d "${ORIGIN_PATH}" ]; then
 else
   IS_DIR=false
 fi
+TMP_FILE="${TMP_PATH}/$(basename "${ORIGIN_PATH}")"
 
 echo "
 IS_DIR: ${IS_DIR}"
