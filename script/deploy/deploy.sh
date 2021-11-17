@@ -62,25 +62,21 @@ else
   IS_DIR=false
 fi
 
-# tmp path
-TMP_PATH="/tmp/deploy-$(basename "${ORIGIN_PATH}")-$(date '+%Y%m%d-%H%M%S')"
-echo "
-TMP_PATH: ${TMP_PATH}"
-
 echo "
 IS_DIR: ${IS_DIR}"
 
-SSH_ARGS="-o LogLevel=ERROR"
+# tmp path
+TMP_PATH="/tmp/deploy-$(date '+%Y%m%d-%H%M%S')"
 
+SSH_ARGS="-o LogLevel=ERROR"
 # shellcheck disable=SC2086
 scp ${SSH_ARGS} -P "${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}"
 
 # ---------------------------------------------
-# command
-SSH="ssh ${SSH_ARGS} -p ${PORT} root@${HOST}"
 
 # execute command in remote
-${SSH} "
+# shellcheck disable=SC2086
+ssh ${SSH_ARGS} -p "${PORT}" "root@${HOST}" "
 
 set -e
 
