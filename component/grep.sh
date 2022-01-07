@@ -9,4 +9,7 @@ grep -B 5 foo file  显示foo及前5行
 grep -A 5 foo file  显示foo及后5行
 
 # 去重
-grep -A 10 "Exception: " logback/error.log | uniq -c > exception.log
+grep -A 10 "java.lang.NullPointerException" logback/error.log | uniq -c > exception.log
+
+# 去重 计数
+grep "Exception: " logback/error.log | sort | uniq -c
