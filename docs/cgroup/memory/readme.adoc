@@ -1,0 +1,6 @@
+
+= cpu memory
+
+image::image-2022-01-12-21-43-52-990.png[]
+
+image::image-2022-01-12-21-43-28-105.png[]

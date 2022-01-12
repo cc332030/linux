@@ -1,8 +1,36 @@
 
 = namespace
 
-任何进程都有自己的 namespace
+作用
 
-shell 脚本调用，调用的脚本无法获取到被调用脚本设置的环境变量
+. 系统可以为进程（任意进程）分配不同的 Namespace
+. 保证不同的 Namespace 资源独立分配、进程批次隔离，即不同 Namespace 下的进程互补干扰
 
-新建的用户无法看到 root 用户创建的进程
+实例：
+
+. shell 脚本调用，调用的脚本无法获取到被调用脚本设置的环境变量
+. 新建的用户无法看到 root 用户创建的进程
+
+image::image-2022-01-12-21-38-37-346.png[]
+
+image::image-2022-01-12-21-15-44-079.png[]
+
+== 操作
+
+. 查询当前系统的 namespace
+
+    lsns -t type
+
+. 查看某进程的 namespace
+
+    ls -la /proc/<pid>/ns
+
+. 进入某 namespace 并执行命令
+
+    nsenter -t <pid> -n ip addr
+
+image::image-2022-01-12-21-19-40-314.png[]
+
+image::image-2022-01-12-21-20-19-414.png[]
+
+image::image-2022-01-12-21-41-43-064.png[]
