@@ -10,4 +10,6 @@ uname -a
 cat /etc/centos-release
 cat /etc/redhat-release
 
+cat /etc/os-release
+
 ----
