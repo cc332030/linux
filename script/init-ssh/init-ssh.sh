@@ -1,6 +1,5 @@
 #!/bin/sh
 
-echo
 echo 'init-ssh'
 
 set -e
@@ -23,5 +22,4 @@ chmod 600 $SSH_PATH/config
 echo "$SSH_PRIVATE_KEY" > $SSH_PATH/id_rsa
 chmod 600 $SSH_PATH/id_rsa
 
-echo
 echo 'init-ssh successfully'
