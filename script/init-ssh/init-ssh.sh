@@ -4,6 +4,9 @@ echo 'init-ssh'
 
 set -e
 
+echo "user: $(whoami)"
+echo "home:" ~
+
 if [ ! "$SSH_PRIVATE_KEY" ]; then
   echo SSH_PRIVATE_KEY not exists
   exit 1
