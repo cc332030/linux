@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo 'init-ssh'
+
 set -e
 
 if [ ! "$SSH_PRIVATE_KEY" ]; then
@@ -19,3 +21,5 @@ chmod 600 $SSH_PATH/config
 
 echo "$SSH_PRIVATE_KEY" > $SSH_PATH/id_rsa
 chmod 600 $SSH_PATH/id_rsa
+
+echo 'init-ssh successfully'
