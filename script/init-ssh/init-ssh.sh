@@ -4,7 +4,9 @@ echo 'init-ssh'
 
 set -e
 
-echo "user: $(whoami)"
+user=$(whoami)
+
+echo "user: $user"
 echo "home:" ~
 
 if [ ! "$SSH_PRIVATE_KEY" ]; then
@@ -12,7 +14,15 @@ if [ ! "$SSH_PRIVATE_KEY" ]; then
   exit 1
 fi
 
-SSH_PATH=~/.ssh
+if [ "root" = "$user" ]
+then
+  SSH_PATH=/root/.ssh
+else
+  SSH_PATH=~/.ssh
+fi
+
+echo "SSH_PATH: $SSH_PATH"
+
 mkdir -p $SSH_PATH
 chmod -R 700 $SSH_PATH
 
