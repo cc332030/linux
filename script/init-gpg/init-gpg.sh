@@ -16,10 +16,17 @@ user=$(whoami)
 echo "user: $user"
 echo "home:" ~
 
-USER_HOME=~
+if [ "root" = "$user" ]
+then
+  USER_HOME=/root
+else
+  USER_HOME=/home/$user
+fi
 
-GPG_PATH=$USER_HOME/.gnupg
+GPG_PATH=~/.gnupg
 echo "GPG_PATH: $GPG_PATH"
+
+CP_PATH=$GPG_PATH
 
 mkdir -p "$GPG_PATH"
 chmod -R 700 "$GPG_PATH"
@@ -32,5 +39,10 @@ echo "$GPG_PASSWORD" | \
   gpg $GPG_TTY \
   --passphrase-fd 0  \
   --export-secret-keys -o "${GPG_PATH}/secring.gpg"
+
+if [ ! ~ = "$USER_HOME" ]
+then
+  cp -r "$CP_PATH" ~
+fi
 
 echo 'init-gpg successfully'

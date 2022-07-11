@@ -24,6 +24,8 @@ fi
 SSH_PATH=$USER_HOME/.ssh
 echo "SSH_PATH: $SSH_PATH"
 
+CP_PATH=$SSH_PATH
+
 mkdir -p "$SSH_PATH"
 chmod -R 700 "$SSH_PATH"
 
@@ -40,7 +42,7 @@ chmod 600 "$ID_RSA_PATH"
 
 if [ ! ~ = "$USER_HOME" ]
 then
-  cp -r "$SSH_PATH" ~
+  cp -r "$CP_PATH" ~
 fi
 
 echo 'init-ssh successfully'
