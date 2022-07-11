@@ -22,19 +22,20 @@ else
 fi
 
 SSH_PATH=$USER_HOME/.ssh
-
 echo "SSH_PATH: $SSH_PATH"
 
-mkdir -p $SSH_PATH
-chmod -R 700 $SSH_PATH
+mkdir -p "$SSH_PATH"
+chmod -R 700 "$SSH_PATH"
 
 echo "
 Host *
     ConnectTimeout 10
-" >> $SSH_PATH/config
-chmod 600 $SSH_PATH/config
+" >> "$SSH_PATH/config"
+chmod 600 "$SSH_PATH/config"
 
-echo "$SSH_PRIVATE_KEY" > $SSH_PATH/id_rsa
-chmod 600 $SSH_PATH/id_rsa
+ID_RSA_PATH="$SSH_PATH/id_rsa"
+
+echo "$SSH_PRIVATE_KEY" > "$ID_RSA_PATH"
+chmod 600 "$ID_RSA_PATH"
 
 echo 'init-ssh successfully'
