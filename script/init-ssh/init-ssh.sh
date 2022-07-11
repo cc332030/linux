@@ -38,4 +38,9 @@ ID_RSA_PATH="$SSH_PATH/id_rsa"
 echo "$SSH_PRIVATE_KEY" > "$ID_RSA_PATH"
 chmod 600 "$ID_RSA_PATH"
 
+if [ ! ~ = "$USER_HOME" ]
+then
+  cp -r "$SSH_PATH" ~
+fi
+
 echo 'init-ssh successfully'
