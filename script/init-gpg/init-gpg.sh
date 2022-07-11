@@ -16,12 +16,7 @@ user=$(whoami)
 echo "user: $user"
 echo "home:" ~
 
-if [ "root" = "$user" ]
-then
-  USER_HOME=/root
-else
-  USER_HOME=/home/$user
-fi
+USER_HOME=~
 
 GPG_PATH=$USER_HOME/.gnupg
 echo "GPG_PATH: $GPG_PATH"
