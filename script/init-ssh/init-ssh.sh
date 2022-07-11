@@ -16,10 +16,12 @@ echo "home:" ~
 
 if [ "root" = "$user" ]
 then
-  SSH_PATH=/root/.ssh
+  USER_HOME=/root
 else
-  SSH_PATH=~/.ssh
+  USER_HOME=/home/$user
 fi
+
+SSH_PATH=$USER_HOME/.ssh
 
 echo "SSH_PATH: $SSH_PATH"
 
