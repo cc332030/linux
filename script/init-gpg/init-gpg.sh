@@ -23,7 +23,7 @@ else
   USER_HOME=/home/$user
 fi
 
-GPG_PATH=~/.gnupg
+GPG_PATH=$USER_HOME/.gnupg
 echo "GPG_PATH: $GPG_PATH"
 
 CP_PATH=$GPG_PATH
