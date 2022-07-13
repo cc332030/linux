@@ -1,0 +1,23 @@
+
+= 字符串截取
+
+== cut 字符串分割
+[source,shell]
+----
+curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
+  grep browser_download_url |
+  grep compiler |
+  cut -d \" -f 4
+----
+
+== 使用表达式
+
+[source,shell]
+----
+# 截取 `: "` 右边的字符串
+browserDownloadUrl=${browserDownloadUrl#*: \"}
+
+# 截取 `"` 左边的字符串
+browserDownloadUrl=${browserDownloadUrl%\"*}
+
+----
