@@ -4,8 +4,8 @@ echo 'clean-gpg'
 
 set -e
 
-if [ ! "$SSH_PRIVATE_KEY" ]; then
-  echo SSH_PRIVATE_KEY not exists
+if [ ! "$GPG_PRIVATE_KEY" ]; then
+  echo GPG_PRIVATE_KEY not exists
   exit 1
 fi
 
