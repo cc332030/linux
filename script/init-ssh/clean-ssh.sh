@@ -24,8 +24,6 @@ fi
 SSH_PATH=$USER_HOME/.ssh
 echo "SSH_PATH: $SSH_PATH"
 
-CP_PATH=$SSH_PATH
-
 echo "clean SSH_PATH: $SSH_PATH"
 ls -lh "$SSH_PATH"
 rm -rf "$SSH_PATH"
@@ -33,9 +31,9 @@ rm -rf "$SSH_PATH"
 # shellcheck disable=SC2116
 if [ ! ~ = "$USER_HOME" ]
 then
-  echo "clean CP_PATH: $CP_PATH"
-  ls -lh "$CP_PATH"
-  rm -rf "$CP_PATH"
+  echo "clean CP_PATH: ~/.ssh"
+  ls -lh ~/.ssh
+  rm -rf ~/.ssh
 fi
 
 echo 'clean-ssh successfully'
