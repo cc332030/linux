@@ -30,7 +30,8 @@ echo "clean SSH_PATH: $SSH_PATH"
 ls -lh "$SSH_PATH"
 rm -rf "$SSH_PATH"
 
-if [ ! ~ = "$USER_HOME" ]
+# shellcheck disable=SC2086
+if [ ! ~ = $USER_HOME ]
 then
   echo "clean CP_PATH: $CP_PATH"
   ls -lh "CP_PATH $CP_PATH"
