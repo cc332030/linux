@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo 'clean-ssh'
+echo 'clean-gpg'
 
 set -e
 
@@ -21,18 +21,18 @@ else
   USER_HOME=/home/$user
 fi
 
-SSH_PATH=$USER_HOME/.ssh
-echo "SSH_PATH: $SSH_PATH"
+GPG_PATH=$USER_HOME/.gnupg
+echo "GPG_PATH: $GPG_PATH"
 
-echo "clean SSH_PATH: $SSH_PATH"
-ls -lh "$SSH_PATH"
-rm -rf "$SSH_PATH"
+echo "clean GRADLE_USER_HOME: $GPG_PATH"
+ls -lh "$GPG_PATH"
+rm -rf "$GPG_PATH"
 
 if [ ! ~ = "$USER_HOME" ]
 then
-  echo "clean ~/.ssh"
-  ls -lh ~/.ssh
-  rm -rf ~/.ssh
+  echo "clean ~/.gnupg"
+  ls -lh ~/.gnupg
+  rm -rf ~/.gnupg
 fi
 
-echo 'clean-ssh successfully'
+echo 'clean-gpg successfully'
