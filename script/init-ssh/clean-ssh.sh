@@ -30,9 +30,10 @@ rm -rf "$SSH_PATH"
 
 if [ ! ~ = "$USER_HOME" ]
 then
-  echo "clean ~/.ssh"
-  ls -lh ~/.ssh
-  rm -rf ~/.ssh
+  CLEAN_PATH=~/.ssh
+  echo "clean $CLEAN_PATH"
+  ls -lh $CLEAN_PATH
+  rm -rf $CLEAN_PATH
 fi
 
 echo 'clean-ssh successfully'

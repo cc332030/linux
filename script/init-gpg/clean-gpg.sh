@@ -30,9 +30,10 @@ rm -rf "$GPG_PATH"
 
 if [ ! ~ = "$USER_HOME" ]
 then
-  echo "clean ~/.gnupg"
-  ls -lh ~/.gnupg
-  rm -rf ~/.gnupg
+  CLEAN_PATH=~/.gnupg
+  echo "clean $CLEAN_PATH"
+  ls -lh $CLEAN_PATH
+  rm -rf $CLEAN_PATH
 fi
 
 echo 'clean-gpg successfully'
