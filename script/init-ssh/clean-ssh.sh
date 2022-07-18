@@ -26,11 +26,15 @@ echo "SSH_PATH: $SSH_PATH"
 
 CP_PATH=$SSH_PATH
 
+echo "clean SSH_PATH: $SSH_PATH"
 ls -lh "$SSH_PATH"
 rm -rf "$SSH_PATH"
 
 if [ ! ~ = "$USER_HOME" ]
 then
-  ls -lh "$CP_PATH"
+  echo "clean CP_PATH: $CP_PATH"
+  ls -lh "CP_PATH $CP_PATH"
   rm -rf "$CP_PATH"
 fi
+
+echo 'clean-ssh successfully'
