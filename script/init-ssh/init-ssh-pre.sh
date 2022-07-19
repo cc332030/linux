@@ -26,6 +26,6 @@ echo "GITEE_IP: $GITEE_IP"
 
 echo "$GITEE_IP $GITEE_COM
 $(cat /etc/hosts)
-" > /etc/hosts
+" >> /etc/hosts
 
 echo 'init-ssh-pre successfully'
