@@ -12,8 +12,4 @@ curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
   grep compiler |
   cut -d \" -f 4
 
-curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
-  grep browser_download_url |
-  grep compiler |
-  awk -F\" '{print $4}'
 ----
