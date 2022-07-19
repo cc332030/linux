@@ -14,8 +14,8 @@ GITEE_COM=gitee.com
 
 nslookup -version
 
-nslookup $GITEE_COM
-nslookup $GITEE_COM 8.8.8.8
+nslookup gitee.com
+nslookup gitee.com 8.8.8.8
 
 GITEE_IP=$(nslookup $GITEE_COM 8.8.8.8 |
              grep "Address: " |
