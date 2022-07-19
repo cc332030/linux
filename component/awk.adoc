@@ -72,6 +72,11 @@ nslookup gitee.com 8.8.8.8 |
 curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
   awk '/browser_download_url/' |
   awk -F\" '/compiler/ {print $4}'
+
+# 多条件筛选
+curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
+  awk -F\" '/browser_download_url/ && /compiler/ {print $4}'
+
 ----
 
 [source,shell]
