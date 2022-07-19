@@ -74,3 +74,13 @@ curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
   grep compiler |
   awk -F\" '{print $4}'
 ----
+
+[source,shell]
+----
+# 匹配以 "tcp " 开头，tcp 后面有个空格
+netstat -ant | awk '/^tcp / {print}'
+
+# "tcp" 开头，定义一个 map，<$NF,次数>，并打印
+netstat -ant | awk '/^tcp/ {++S[$NF]} END {for(a in S) print (a,S[a])}'
+
+----
