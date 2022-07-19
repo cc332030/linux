@@ -1,0 +1,76 @@
+
+= awk
+
+== 语法
+
+. $0
+
+    表示显示整行
+
+. NF
+
+    表示当前行被分隔符切开以后，一共有几个字段，
+    $NF 即最后一列
+    $(NF-1) 倒数第二列
+
+== BEGIN END
+
+AWK 包含两种特殊的模式：BEGIN 和 END。
+
+. BEGIN
+
+    指定了处理文本之前需要执行的操作
+
+. END
+
+    指定了处理完所有行之后所需要执行的操作
+
+[source,shell]
+----
+echo "1 2 3
+4 5 6
+7 8 9" | awk 'BEGIN{print "aaa","bbb"} {print $1,$2} END{print "ccc","ddd"}'
+----
+
+== 分隔符
+
+输入分隔符（FS） & 输出分隔符（OFS）
+
+输入分隔符：#
+[source,shell]
+----
+awk -F#'{print $1,$2}' test
+awk -v FS='#' '{print $1,$2}' test
+----
+
+== 例子
+
+get ip in nslookup
+
+[source,shell]
+----
+#Server:         8.8.8.8
+#Address:        8.8.8.8#53
+#
+#Non-authoritative answer:
+#Name:   gitee.com
+#Address: 154.213.2.253
+#gitee.com       canonical name = aoufnebg.dayugslb.com.
+
+# 默认通过空格分割字符串
+nslookup gitee.com 8.8.8.8 |
+             grep "Address: " |
+             awk '{print $2}'
+
+----
+
+[source,shell]
+----
+# "browser_download_url": "https://github.com/JetBrains/kotlin/releases/download/v1.7.10/kotlin-compiler-1.7.10.zip"
+
+# 通过分割双引号，取得 json 中值
+curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
+  grep browser_download_url |
+  grep compiler |
+  awk -F\" '{print $4}'
+----

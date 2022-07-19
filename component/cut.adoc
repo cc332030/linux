@@ -1,0 +1,19 @@
+
+= cut
+
+[source,shell]
+----
+
+# "browser_download_url": "https://github.com/JetBrains/kotlin/releases/download/v1.7.10/kotlin-compiler-1.7.10.zip"
+
+# 通过分割双引号，取得 json 中值
+curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
+  grep browser_download_url |
+  grep compiler |
+  cut -d \" -f 4
+
+curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
+  grep browser_download_url |
+  grep compiler |
+  awk -F\" '{print $4}'
+----
