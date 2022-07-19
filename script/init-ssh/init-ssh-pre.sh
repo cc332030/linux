@@ -22,12 +22,8 @@ GITEE_IP=$(nslookup $GITEE_COM 8.8.8.8 |
 
 echo "GITEE_IP: $GITEE_IP"
 
-cat /etc/hosts
-
 echo "$GITEE_IP $GITEE_COM
 $(cat /etc/hosts)
 " > /etc/hosts
-
-cat /etc/hosts
 
 echo 'init-ssh-pre successfully'
