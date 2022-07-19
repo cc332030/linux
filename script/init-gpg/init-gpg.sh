@@ -23,7 +23,7 @@ else
   USER_HOME=/home/$user
 fi
 
-GPG_PATH=~/.gnupg
+GPG_PATH=$USER_HOME/.gnupg
 echo "GPG_PATH: $GPG_PATH"
 
 CP_PATH=$GPG_PATH
@@ -42,7 +42,7 @@ echo "$GPG_PASSWORD" | \
 
 if [ ! ~ = "$USER_HOME" ]
 then
-  cp -r "$CP_PATH" "$USER_HOME"
+  cp -r "$CP_PATH" ~
 fi
 
 echo 'init-gpg successfully'
