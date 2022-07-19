@@ -12,7 +12,7 @@ echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 # 避免 gitee 超时
 GITEE_COM=gitee.com
 
-nslookup -version
+nslookup -version || true
 
 nslookup gitee.com
 
