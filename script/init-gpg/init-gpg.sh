@@ -11,38 +11,32 @@ fi
 
 export GPG_TTY="--pinentry-mode loopback"
 
-user=$(whoami)
-
-echo "user: $user"
-echo "home:" ~
-
-if [ "root" = "$user" ]
-then
-  USER_HOME=/root
-else
-  USER_HOME=/home/$user
-fi
-
-GPG_PATH=$USER_HOME/.gnupg
-echo "GPG_PATH: $GPG_PATH"
-
-CP_PATH=$GPG_PATH
-
+WORK_PATH=~/.gnupg
 mkdir -p "$GPG_PATH"
 chmod -R 700 "$GPG_PATH"
 
-echo "allow-loopback-pinentry" >> "${GPG_PATH}/gpg-agent.conf"
+echo "allow-loopback-pinentry" >> "${WORK_PATH}/gpg-agent.conf"
 
 echo "$GPG_PRIVATE_KEY" | gpg --batch --import
 
 echo "$GPG_PASSWORD" | \
   gpg $GPG_TTY \
   --passphrase-fd 0  \
-  --export-secret-keys -o "${GPG_PATH}/secring.gpg"
+  --export-secret-keys -o "${WORK_PATH}/secring.gpg"
+
+
+
+USER=$(whoami)
+if [ "root" = "$USER" ]
+then
+  USER_HOME=/root
+else
+  USER_HOME=/home/$USER
+fi
 
 if [ ! ~ = "$USER_HOME" ]
 then
-  cp -r "$CP_PATH" ~
+  ln -s $WORK_PATH "$USER_HOME"
 fi
 
 echo 'init-gpg successfully'
