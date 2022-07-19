@@ -6,4 +6,10 @@
 
 # dl-cdn.alpinelinux.org -> mirrors.aliyun.com
 sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
+# s 后面的即为分隔符，可替换，如
+echo "2/3/4" | sed "s#2/3#X#"
+echo "2/3/4" | sed "s_2/3_X_"
+echo "2/3/4" | sed "s 2/3 X "
+
 ----
