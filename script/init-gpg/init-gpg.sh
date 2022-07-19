@@ -12,8 +12,8 @@ fi
 export GPG_TTY="--pinentry-mode loopback"
 
 WORK_PATH=~/.gnupg
-mkdir -p "$GPG_PATH"
-chmod -R 700 "$GPG_PATH"
+mkdir -p "$WORK_PATH"
+chmod -R 700 "$WORK_PATH"
 
 echo "allow-loopback-pinentry" >> "${WORK_PATH}/gpg-agent.conf"
 
