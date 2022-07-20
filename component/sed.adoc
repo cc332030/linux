@@ -13,3 +13,10 @@ echo "2/3/4" | sed "s_2/3_X_"
 echo "2/3/4" | sed "s 2/3 X "
 
 ----
+
+字符串分割
+[source,shell]
+----
+echo "a,b,c" | sed "s/,/\n/g" | xargs -I {} echo "print {}"
+
+----

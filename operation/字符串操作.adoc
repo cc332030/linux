@@ -1,13 +1,21 @@
 
 = 字符串截取
 
-== cut 字符串分割
+== 字符串分割
+[source,shell]
+----
+echo "a,b,c" | sed "s/,/\n/g" | xargs -I {} echo "print {}"
+
+----
+
+== cut 字符串截取
 [source,shell]
 ----
 curl -s https://api.github.com/repos/JetBrains/kotlin/releases/latest |
   grep browser_download_url |
   grep compiler |
   cut -d \" -f 4
+
 ----
 
 == 使用表达式
