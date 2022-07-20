@@ -12,6 +12,8 @@ fi
 export GPG_TTY="--pinentry-mode loopback"
 
 WORK_PATH=~/.gnupg
+echo "WORK_PATH: ${WORK_PATH}"
+
 mkdir -p "$WORK_PATH"
 chmod -R 700 "$WORK_PATH"
 

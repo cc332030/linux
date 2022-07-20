@@ -10,6 +10,8 @@ if [ ! "$SSH_PRIVATE_KEY" ]; then
 fi
 
 WORK_PATH=~/.ssh
+echo "WORK_PATH: ${WORK_PATH}"
+
 mkdir -p "$WORK_PATH"
 chmod -R 700 "$WORK_PATH"
 
