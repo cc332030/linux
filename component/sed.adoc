@@ -14,7 +14,17 @@ echo "2/3/4" | sed "s 2/3 X "
 
 ----
 
-字符串分割
+字符串分割 for 执行
+[source,shell]
+----
+result=$(echo "a,b,c" | sed "s/,/\n/g")
+for a in $result; do
+  echo "print $a"
+done
+
+----
+
+字符串分割 xargs 执行
 [source,shell]
 ----
 echo "a,b,c" | sed "s/,/\n/g" | xargs -I {} echo "print {}"
