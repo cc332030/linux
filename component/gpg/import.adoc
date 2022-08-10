@@ -3,6 +3,9 @@
 
 [source,shell script]
 ----
+
+gpgconf --kill gpg-agent
+
 # 导入，not use cmder, has a error with access denied
 gpg --import public-file.key / private-file.key
 
