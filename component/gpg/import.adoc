@@ -6,4 +6,7 @@
 # 导入
 gpg --import public-file.key / private-file.key
 
+# windows only
+del /f /s /q %userprofile%\.gnupg\*.lock
+
 ----
