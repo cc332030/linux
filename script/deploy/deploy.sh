@@ -38,6 +38,8 @@ fi
 
 ls -alh
 
+ls -alh source
+
 if [ ! -e "${ORIGIN_PATH}" ]; then
   echo "ORIGIN_PATH: ${ORIGIN_PATH} not exists"
   exit 1
