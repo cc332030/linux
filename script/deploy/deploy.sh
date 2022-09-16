@@ -48,9 +48,9 @@ fi
 REMOTE_PARENT_PATH=$(pwd "${REMOTE_PATH}")
 
 # ls file
-echo "
-ls ORIGIN_PATH"
-ls -lh "${ORIGIN_PATH}"
+#echo "
+#ls ORIGIN_PATH"
+#ls -lh "${ORIGIN_PATH}"
 
 # compress if dir
 if [ -d "${ORIGIN_PATH}" ]; then
@@ -102,9 +102,9 @@ fi
 # clean
 rm -f \"${TMP_PATH}\"
 
-echo '
-ls REMOTE_PATH'
-ls -lh \"${REMOTE_PATH}\"
+#echo '
+#ls REMOTE_PATH'
+#ls -lh \"${REMOTE_PATH}\"
 
 if [ \"${ACTION_COMMAND}\" ]; then
   echo
