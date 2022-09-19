@@ -19,3 +19,7 @@ grep "LogAspect start: .*, cost: " log4j/debug.log
 
 # {min,max}，min 最小出现次数，max 最大出现次数，'{'和'}'需要转义
 grep "LogAspect start: .*, cost: [0-9]\{4,\}" log4j/debug.log
+
+
+# 文件模糊查询，时间排序后查找
+ls -tr log4j/debug.log* | xargs -I {} zgrep {} >> test.log
