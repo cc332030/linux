@@ -22,4 +22,4 @@ grep "LogAspect start: .*, cost: [0-9]\{4,\}" log4j/debug.log
 
 
 # 文件模糊查询，时间排序后查找
-ls -tr log4j/debug.log* | xargs -I {} zgrep {} >> test.log
+ls -tr log4j/debug.log* | xargs -I {} zgrep '' {} >> test.log
