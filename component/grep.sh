@@ -12,7 +12,10 @@ grep -A 5 foo file  显示foo及后5行
 grep -A 10 "java.lang.NullPointerException" logback/error.log | uniq -c > exception.log
 
 # 去重 计数
-grep "Exception: " logback/error.log | sort | uniq -c
+grep "Exception: " error.log | sort | uniq -c
+
+# 去重 计数 只统计异常
+grep "Exception: " error.log | cut -d : -f 1 | sort | uniq -c
 
 # 模糊查询 .代表任意字符，*代表次数
 grep "LogAspect start: .*, cost: " log4j/debug.log
