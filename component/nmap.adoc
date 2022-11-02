@@ -3,5 +3,6 @@
 
 [source,shell script]
 ----
-nmap -Pn 192.168.1.2 -p 1-65535
+ip=192.168.1.2
+nmap -Pn $ip -p 1-65535
 ----
