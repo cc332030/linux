@@ -1,0 +1,27 @@
+
+= fdisk
+
+
+
+[source,shell]
+----
+# 查看磁盘
+fdisk -l
+
+# 创建 GPT 分区表
+sudo apt -y install gdisk
+sudo gdisk /dev/sda
+
+# 写入 GPT
+w
+
+# 创建分区
+sudo fdisk /dev/sda
+
+# 格式化
+sudo mkfs.btrfs -f /dev/sda1
+
+# 挂载分区
+mount /dev/vdb1 /data
+
+----

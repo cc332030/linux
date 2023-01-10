@@ -1,0 +1,7 @@
+
+= mount 挂载
+
+[source,shell]
+----
+mount /dev/vdb1 /data
+----
