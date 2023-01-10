@@ -22,6 +22,6 @@ sudo fdisk /dev/sda
 sudo mkfs.btrfs -f /dev/sda1
 
 # 挂载分区
-mount /dev/vdb1 /data
+sudo mount /dev/sda1 /data
 
 ----

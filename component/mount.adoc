@@ -3,5 +3,5 @@
 
 [source,shell]
 ----
-mount /dev/vdb1 /data
+sudo mount /dev/sda1 /data
 ----
