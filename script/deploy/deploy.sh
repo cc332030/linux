@@ -64,11 +64,14 @@ if [ -d "${ORIGIN_PATH}" ]; then
   NEW_PATH=$(pwd)/${ORIGIN_TAR_GZ}
   if ${MULTI_MODULE}; then
     mkdir -p ~/tmp/origin
+    echo find .
+    find .
+    find "${ORIGIN_PATH}" -name build -exec echo {} \;
     find "${ORIGIN_PATH}" -name build -exec sh -c 'cp -r {} ~/tmp/origin`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
     find ~/tmp/origin
     cd ~/tmp/origin
-    echo ls -alh ~/tmp/origin
-    ls -alh ~/tmp/origin
+    echo ls -alh
+    ls -alh
     ls | xargs -I {} tar -rf ${ORIGIN_TAR} {}
     gzip ${ORIGIN_TAR}
     tar --exclude='*/*/*' -tf ${ORIGIN_TAR_GZ}
