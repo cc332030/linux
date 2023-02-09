@@ -63,7 +63,7 @@ if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
   NEW_PATH=${ORIGIN_TAR_GZ}
   if ${MULTI_MODULE}; then
-    find "${ORIGIN_PATH}" -name build -exec sh -c 'cp -r {} `echo tmp/origin/{} | sed "s|\./||g" | sed "s|/build||g"`' \;
+    find "${ORIGIN_PATH}" -name build -exec sh -c 'cp -r {} tmp/origin/`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
     cd tmp/origin
     ls | xargs -I {} tar -rf ${ORIGIN_TAR} {}
     gzip ${ORIGIN_TAR}
@@ -106,7 +106,7 @@ if [ -e \"${REMOTE_PATH}\" ];then
   if ${MULTI_MODULE}; then
     echo before rm
     ls -alh ${REMOTE_PATH}
-    tar --exclude='*/*/*' -tf ${TMP_PATH} | sed "s|/||g" | xargs -I {} rm -rf "${REMOTE_PATH}/{}"
+    tar --exclude='*/*/*' -tf ${TMP_PATH} | xargs -I {} basename {} | xargs -I {} rm -rf "${REMOTE_PATH}/{}"
     echo after rm
     ls -alh ${REMOTE_PATH}
   else
