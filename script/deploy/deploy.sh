@@ -61,10 +61,12 @@ ORIGIN_TAR_GZ=origin.tar.gz
 # compress if dir
 if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
-  NEW_PATH=${ORIGIN_TAR_GZ}
+  NEW_PATH=$(pwd)/${ORIGIN_TAR_GZ}
   if ${MULTI_MODULE}; then
-    find "${ORIGIN_PATH}" -name build -exec sh -c 'cp -r {} tmp/origin/`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
-    cd tmp/origin
+    mkdir -p ~/tmp/origin
+    find "${ORIGIN_PATH}" -name build -exec sh -c 'cp -r {} ~/tmp/origin`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
+    find ~/tmp/origin
+    cd ~/tmp/origin
     ls | xargs -I {} tar -rf ${ORIGIN_TAR} {}
     gzip ${ORIGIN_TAR}
     tar --exclude='*/*/*' -tf ${ORIGIN_TAR_GZ}
