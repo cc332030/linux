@@ -68,8 +68,6 @@ if [ -d "${ORIGIN_PATH}" ]; then
     which find
     echo ls -alh
     ls -alh
-    echo find .
-    find .
     find "${ORIGIN_PATH}" -name build -exec echo {} \;
     find "${ORIGIN_PATH}" -name build -exec sh -c 'cp -r {} ~/tmp/origin`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
     find ~/tmp/origin
