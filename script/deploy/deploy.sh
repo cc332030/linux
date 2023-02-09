@@ -64,6 +64,10 @@ if [ -d "${ORIGIN_PATH}" ]; then
   NEW_PATH=$(pwd)/${ORIGIN_TAR_GZ}
   if ${MULTI_MODULE}; then
     mkdir -p ~/tmp/origin
+    echo which find
+    which find
+    echo ls -alh
+    ls -alh
     echo find .
     find .
     find "${ORIGIN_PATH}" -name build -exec echo {} \;
