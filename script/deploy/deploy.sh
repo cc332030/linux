@@ -67,6 +67,8 @@ if [ -d "${ORIGIN_PATH}" ]; then
     find "${ORIGIN_PATH}" -name build -exec sh -c 'cp -r {} ~/tmp/origin`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
     find ~/tmp/origin
     cd ~/tmp/origin
+    echo ls -alh ~/tmp/origin
+    ls -alh ~/tmp/origin
     ls | xargs -I {} tar -rf ${ORIGIN_TAR} {}
     gzip ${ORIGIN_TAR}
     tar --exclude='*/*/*' -tf ${ORIGIN_TAR_GZ}
