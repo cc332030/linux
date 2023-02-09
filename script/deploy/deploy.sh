@@ -65,22 +65,22 @@ if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
   NEW_PATH=${WORK_DIR}/${ORIGIN_TAR_GZ}
   if ${MULTI_MODULE}; then
-    rm -rf ~/tmp/origin
-    mkdir -p ~/tmp/origin
-    echo which find
-    which find
-    echo ls -alh ORIGIN_PATH="${ORIGIN_PATH}"
-    ls -alh "${ORIGIN_PATH}"
-    find "${ORIGIN_PATH}" -name build -not -path "*/node_modules/*" -exec echo {} \;
-    find "${ORIGIN_PATH}" -name build -not -path "*/node_modules/*" -exec sh -c 'cp -r {} ~/tmp/origin/`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
-    find ~/tmp/origin
-    cd ~/tmp/origin
-    echo ls -alh
-    ls -alh
-    ls | xargs -I {} tar -rf "${WORK_DIR}/${ORIGIN_TAR}" {}
+    TMP_ORIGIN=origin
+    rm -rf ${TMP_ORIGIN}
+    mkdir -p ${TMP_ORIGIN}
+
+    # find build dir
+    find "${ORIGIN_PATH}" -name build -not -path "*/node_modules/*" -exec \
+      sh -c 'cp -r {} origin/`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
+
+    # tar dir
+    cd ${TMP_ORIGIN}
+    ls -lh
+    ls | grep -v 'c-' | xargs -I {} tar -rf "${WORK_DIR}/${ORIGIN_TAR}" {}
+
+    # compress dir
     cd "${WORK_DIR}"
     gzip ${ORIGIN_TAR}
-    tar --exclude='*/*/*' -tf ${ORIGIN_TAR_GZ}
   else
     tar -zcvf "${NEW_PATH}" -C "${ORIGIN_PATH}" .
   fi
