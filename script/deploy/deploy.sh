@@ -55,27 +55,30 @@ REMOTE_PARENT_PATH=$(pwd "${REMOTE_PATH}")
 #ls ORIGIN_PATH"
 #ls -lh "${ORIGIN_PATH}"
 
+WORK_DIR=$(pwd)
+
 ORIGIN_TAR=origin.tar
 ORIGIN_TAR_GZ=origin.tar.gz
 
 # compress if dir
 if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
-  NEW_PATH=$(pwd)/${ORIGIN_TAR_GZ}
+  NEW_PATH=${WORK_DIR}/${ORIGIN_TAR_GZ}
   if ${MULTI_MODULE}; then
     rm -rf ~/tmp/origin
     mkdir -p ~/tmp/origin
     echo which find
     which find
-    echo ls -alh ORIGIN_PATH=${ORIGIN_PATH}
-    ls -alh ${ORIGIN_PATH}
+    echo ls -alh ORIGIN_PATH="${ORIGIN_PATH}"
+    ls -alh "${ORIGIN_PATH}"
     find "${ORIGIN_PATH}" -name build -not -path "*/node_modules/*" -exec echo {} \;
     find "${ORIGIN_PATH}" -name build -not -path "*/node_modules/*" -exec sh -c 'cp -r {} ~/tmp/origin/`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
     find ~/tmp/origin
     cd ~/tmp/origin
     echo ls -alh
     ls -alh
-    ls | xargs -I {} tar -rf ${ORIGIN_TAR} {}
+    ls | xargs -I {} tar -rf "${WORK_DIR}/${ORIGIN_TAR}" {}
+    cd "${WORK_DIR}"
     gzip ${ORIGIN_TAR}
     tar --exclude='*/*/*' -tf ${ORIGIN_TAR_GZ}
   else
