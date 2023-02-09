@@ -63,16 +63,16 @@ if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
   NEW_PATH=$(pwd)/${ORIGIN_TAR_GZ}
   if ${MULTI_MODULE}; then
-    rm -rf /tmp/origin
-    mkdir -p /tmp/origin
+    rm -rf ~/tmp/origin
+    mkdir -p ~/tmp/origin
     echo which find
     which find
     echo ls -alh ORIGIN_PATH=${ORIGIN_PATH}
     ls -alh ${ORIGIN_PATH}
     find "${ORIGIN_PATH}" -name build -not -path "*/node_modules/*" -exec echo {} \;
-    find "${ORIGIN_PATH}" -name build -not -path "*/node_modules/*" -exec sh -c 'cp -r {} /tmp/origin`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
-    find /tmp/origin
-    cd /tmp/origin
+    find "${ORIGIN_PATH}" -name build -not -path "*/node_modules/*" -exec sh -c 'cp -r {} ~/tmp/origin/`echo {} | sed "s|/build||g" | xargs -I {} basename {}`' \;
+    find ~/tmp/origin
+    cd ~/tmp/origin
     echo ls -alh
     ls -alh
     ls | xargs -I {} tar -rf ${ORIGIN_TAR} {}
