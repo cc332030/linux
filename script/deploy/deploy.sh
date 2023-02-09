@@ -117,11 +117,7 @@ fi
 
 if [ -e \"${REMOTE_PATH}\" ];then
   if ${MULTI_MODULE}; then
-    echo before rm
-    ls -alh ${REMOTE_PATH}
     tar --exclude='*/*/*' -tf ${TMP_PATH} | xargs -I {} basename {} | xargs -I {} rm -rf "${REMOTE_PATH}/{}"
-    echo after rm
-    ls -alh ${REMOTE_PATH}
   else
     rm -rf \"${REMOTE_PATH}\"
   fi
@@ -138,9 +134,9 @@ fi
 # clean
 rm -f \"${TMP_PATH}\"
 
-echo '
-ls REMOTE_PATH'
-ls -lh \"${REMOTE_PATH}\"
+#echo '
+#ls REMOTE_PATH'
+#ls -lh \"${REMOTE_PATH}\"
 
 if [ \"${ACTION_COMMAND}\" ]; then
   echo
