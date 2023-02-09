@@ -14,11 +14,14 @@ REMOTE_PATH=$(printf '%s' "${REMOTE_PATH}" | sed -e "s@\${REPOSITORY_NAME}@${REP
 PREPARE_COMMAND=$(printf '%s' "${PREPARE_COMMAND}" | sed -e "s@\${REPOSITORY_NAME}@${REPOSITORY_NAME}@g")
 ACTION_COMMAND=$(printf '%s' "${ACTION_COMMAND}" | sed -e "s@\${REPOSITORY_NAME}@${REPOSITORY_NAME}@g")
 
+MULTI_MODULE=${MULTI_MODULE}
+
 echo "
 ORIGIN_PATH: ${ORIGIN_PATH}
 REMOTE_PATH: ${REMOTE_PATH}
 PREPARE_COMMAND: ${PREPARE_COMMAND}
-ACTION_COMMAND: ${ACTION_COMMAND}"
+ACTION_COMMAND: ${ACTION_COMMAND}
+MULTI_MODULE: ${MULTI_MODULE}"
 
 # check parameter
 if [ ! "${HOST}" ]; then
@@ -52,11 +55,22 @@ REMOTE_PARENT_PATH=$(pwd "${REMOTE_PATH}")
 #ls ORIGIN_PATH"
 #ls -lh "${ORIGIN_PATH}"
 
+ORIGIN_TAR=origin.tar
+ORIGIN_TAR_GZ=origin.tar.gz
+
 # compress if dir
 if [ -d "${ORIGIN_PATH}" ]; then
   IS_DIR=true
-  NEW_PATH="origin.tar.gz"
-  tar -zcf "${NEW_PATH}" -C "${ORIGIN_PATH}" .
+  NEW_PATH=${ORIGIN_TAR_GZ}
+  if ${MULTI_MODULE}; then
+    find "${ORIGIN_PATH}" -name build -exec sh -c 'cp -r {} `echo tmp/origin/{} | sed "s|\./||g" | sed "s|/build||g"`' \;
+    cd tmp/origin
+    ls | xargs -I {} tar -rf ${ORIGIN_TAR} {}
+    gzip ${ORIGIN_TAR}
+    tar --exclude='*/*/*' -tf ${ORIGIN_TAR_GZ}
+  else
+    tar -zcvf "${NEW_PATH}" -C "${ORIGIN_PATH}" .
+  fi
   ORIGIN_PATH="${NEW_PATH}"
 else
   IS_DIR=false
@@ -80,6 +94,8 @@ ssh ${SSH_ARGS} -p "${PORT}" "root@${HOST}" "
 
 set -e
 
+MULTI_MODULE=${MULTI_MODULE}
+
 if [ \"${PREPARE_COMMAND}\" ]; then
   echo
   echo 'execute PREPARE_COMMAND'
@@ -87,7 +103,15 @@ if [ \"${PREPARE_COMMAND}\" ]; then
 fi
 
 if [ -e \"${REMOTE_PATH}\" ];then
-  rm -rf \"${REMOTE_PATH}\"
+  if ${MULTI_MODULE}; then
+    echo before rm
+    ls -alh ${REMOTE_PATH}
+    tar --exclude='*/*/*' -tf ${TMP_PATH} | sed "s|/||g" | xargs -I {} rm -rf "${REMOTE_PATH}/{}"
+    echo after rm
+    ls -alh ${REMOTE_PATH}
+  else
+    rm -rf \"${REMOTE_PATH}\"
+  fi
 fi
 
 if ${IS_DIR}; then
@@ -101,9 +125,9 @@ fi
 # clean
 rm -f \"${TMP_PATH}\"
 
-#echo '
-#ls REMOTE_PATH'
-#ls -lh \"${REMOTE_PATH}\"
+echo '
+ls REMOTE_PATH'
+ls -lh \"${REMOTE_PATH}\"
 
 if [ \"${ACTION_COMMAND}\" ]; then
   echo
