@@ -76,7 +76,7 @@ if [ -d "${ORIGIN_PATH}" ]; then
     # tar dir
     cd ${TMP_ORIGIN}
     ls -lh
-    ls | grep -v 'c-' | xargs -I {} tar -rf "${WORK_DIR}/${ORIGIN_TAR}" {}
+    ls -I 'c-*' | xargs -I {} tar -rf "${WORK_DIR}/${ORIGIN_TAR}" {}
 
     # compress dir
     cd "${WORK_DIR}"
