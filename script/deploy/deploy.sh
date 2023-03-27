@@ -103,7 +103,7 @@ scp ${SSH_ARGS} -P "${PORT}" "${ORIGIN_PATH}" "root@${HOST}:${TMP_PATH}"
 
 # execute command in remote
 # shellcheck disable=SC2086
-ssh ${SSH_ARGS} -p "${PORT}" "root@${HOST}" "
+ssh ${SSH_ARGS} -p "${PORT}" "root@${HOST}" -t bash -ci "
 
 set -e
 
