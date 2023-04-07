@@ -8,3 +8,16 @@ dnf --disablerepo '*' --enablerepo=extras swap centos-linux-repos centos-stream-
 dnf distro-sync
 
 ----
+
+开机时间分析
+[source,shell]
+----
+systemd-analyze blame
+systemd-analyze critical-chain
+
+echo "
+SystemMaxUse=160M
+SystemMaxFileSize=24M
+" >> /etc/systemd/journald.conf
+
+----
