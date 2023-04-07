@@ -2,12 +2,18 @@
 {
   create 0664 nginx root
   daily
+  # 转储文件数量限制
   rotate 15
+  # 日期命名
   dateext
+  # 忽略错误
   missingok
+  # 空文件不轮转
   notifempty
   compress
+  # 最近的文件不轮转
   delaycompress
+  # 匹配多个文件时，一次轮转所有
   sharedscripts
   postrotate
     docker exec -it nginx kill -USR1 `cat /home/program/nginx/logs/nginx.pid`
