@@ -1,0 +1,16 @@
+
+= 磁盘测速
+
+[source,shell]
+----
+curl -Lso- bench.sh | bash
+
+# 使用 dd 测试写速度，千万有注意 of 后接的文件必须是一个不存在的文件，否则可能造成数据丢失
+sync; dd if=/dev/zero of=/tmp/tempfile bs=1M count=1024; sync
+# 使用 dd 测试读取速度，注意这里的 if 后需要接上一个命令生成的文件
+dd if=/tmp/tempfile of=/dev/null bs=1M count=1024
+
+sudo apt -y install hdparm
+sudo hdparm -Tt /dev/sda
+
+----
