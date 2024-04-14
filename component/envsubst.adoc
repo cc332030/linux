@@ -1,0 +1,10 @@
+
+= envsubst
+
+使用环境变量替换文件内容
+
+[source,shell]
+----
+# 读取 path.txt，使用环境变量格式化后写入 path2.txt
+envsubst < path.txt | tee path2.txt
+----
