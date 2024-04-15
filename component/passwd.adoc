@@ -1,0 +1,8 @@
+
+= passwd
+
+[source,shell]
+----
+echo password | passwd user --stdin
+
+----
