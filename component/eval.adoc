@@ -1,0 +1,8 @@
+
+= eval
+
+[source, shell]
+----
+eval "echo \"$(cat .gitconfig)\""
+
+----
