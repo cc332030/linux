@@ -1,20 +1,22 @@
 
+SWAP_PATH=/swap
+SIZE=2048
+
 # 添加
-dd if=/dev/zero of=/home/.swap bs=1M count=16384
+dd if=/dev/zero of=${SWAP_PATH} bs=1M count=${SIZE}
+chmod 0600 ${SWAP_PATH}
 
 # 格式化
-mkswap /home/.swap
+mkswap ${SWAP_PATH}
 
 # 启用
-swapon /home/.swap
+swapon ${SWAP_PATH}
 
 # 禁用
-swapoff /home/.swap
+swapoff ${SWAP_PATH}
 
 # 开机自启动
-vi /etc/fstab
-/home/.swap swap swap defaults 0 0
-
+echo "${SWAP_PATH} swap swap defaults 0 0" |  tee -a /etc/fstab
 
 # swappiness=0 的时候表示最大限度使用物理内存，然后才是 swap空间
 # swappiness＝100 的时候表示积极的使用swap分区
