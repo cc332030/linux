@@ -3,6 +3,13 @@ name: mirror
 
 on:
   workflow_call:
+    secrets:
+      HOST:
+        required: true
+      PORT:
+        required: true
+      SSH_PRIVATE_KEY:
+        required: true
     inputs:
       work-dir:
         required: false
@@ -10,15 +17,6 @@ on:
       command:
         required: true
         type: string
-    secrets:
-      HOST:
-        required: true
-        type: string
-      PORT:
-        required: true
-        type: string
-      SSH_PRIVATE_KEY:
-        required: true
 
 jobs:
   mirror:
