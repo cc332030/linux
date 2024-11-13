@@ -1,0 +1,38 @@
+
+name: mirror
+
+on:
+  workflow_call:
+    inputs:
+      WORK_DIR:
+        required: false
+        type: string
+      COMMAND:
+        required: true
+        type: string
+    secrets:
+      HOST:
+        required: true
+        type: string
+      PORT:
+        required: true
+        type: string
+      SSH_PRIVATE_KEY:
+        required: true
+
+jobs:
+  mirror:
+    name: mirror
+    runs-on: ubuntu-latest
+    steps:
+      - name: init-ssh-pre
+        run: curl -sL https://github.com/cc332030/linux/raw/master/script/init-ssh/init-ssh-pre.sh | sudo sh
+      - name: init-ssh
+        run: curl -sL https://github.com/cc332030/linux/raw/master/script/init-ssh/init-ssh.sh | sh
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: command
+        run: ssh -p "${{ secrets.PORT }}" "root@${{ secrets.HOST }}${{ inputs.WORK_DIR }}" "${{ inputs.COMMAND }}"
+      - name: init-ssh-clean
+        if: ${{ always() }}
+        run: curl -sL https://github.com/cc332030/linux/raw/master/script/init-ssh/init-ssh-clean.sh | sh
