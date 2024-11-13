@@ -1,5 +1,5 @@
 
-name: mirror
+name: ssh
 
 on:
   workflow_call:
@@ -19,8 +19,8 @@ on:
         type: string
 
 jobs:
-  mirror:
-    name: mirror
+  ssh:
+    name: ssh
     runs-on: ubuntu-latest
     steps:
       - name: init-ssh-pre
