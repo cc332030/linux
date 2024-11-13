@@ -4,10 +4,10 @@ name: mirror
 on:
   workflow_call:
     inputs:
-      WORK_DIR:
+      work-dir:
         required: false
         type: string
-      COMMAND:
+      command:
         required: true
         type: string
     secrets:
