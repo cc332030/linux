@@ -30,7 +30,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: command
-        run: ssh -p "${{ secrets.PORT }}" "root@${{ secrets.HOST }}${{ inputs.work-dir }}" "${{ inputs.command }}"
+        run: ssh -p "${{ secrets.PORT }}" "root@${{ secrets.HOST }}:${{ inputs.work-dir }}" "${{ inputs.command }}"
       - name: init-ssh-clean
         if: ${{ always() }}
         run: curl -sL https://github.com/cc332030/linux/raw/master/script/init-ssh/init-ssh-clean.sh | sh
