@@ -15,7 +15,7 @@ grep -A 10 "java.lang.NullPointerException" logback/error.log | uniq -c > except
 grep "Exception: " error.log | sort | uniq -c
 
 # 去重 计数 只统计异常
-grep "Exception: " error.log | cut -d : -f 1 | sort | uniq -c
+grep "Exception: " error.log | awk -F\" '/Exception: / {print $1}' | sort | uniq -c
 
 # 模糊查询 .代表任意字符，*代表次数
 grep "LogAspect start: .*, cost: " log4j/debug.log
