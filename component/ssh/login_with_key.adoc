@@ -25,5 +25,8 @@ PasswordAuthentication no
 cd ~/.ssh
 cat  id_rsa.pub >> authorized_keys
 
+# 客户端导入
+ssh-copy-id -i key_file user@host
+
 systemctl restart sshd
 ----
