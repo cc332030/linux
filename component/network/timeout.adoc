@@ -20,3 +20,9 @@ netstat -ant|awk '/^tcp/ {++S[$NF]} END {for(a in S) print (a,S[a])}'
 /sbin/sysctl -p
 
 ----
+
+查看进程网络连接使用的端口
+[source,shell]
+----
+ss -p | grep 21445 | grep -v 8070 | grep -v 3306 | grep -v 6379 | less
+----
