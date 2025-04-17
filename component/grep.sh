@@ -27,3 +27,5 @@ grep "LogAspect start: .*, cost: [0-9]\{4,\}" log4j/debug.log
 # 文件模糊查询，时间排序后查找
 ls -tr log4j/debug.log-2022-09-19.* | xargs -I {} sh -c "echo {} >> test.log ; zgrep 'findPWSaleOrderItemSplitByOrderItemNo' {} >> test.log"
 ls -tr log4j/debug.log-2022-09-19.* | xargs -I {} sh -c "echo {}; zgrep 'findPWSaleOrderItemSplitByOrderItemNo' {}"
+
+grep -C5 '' info.log | grep 'delete from' | less
