@@ -1,0 +1,10 @@
+
+= lzop
+
+[source,shell]
+----
+
+# 解压
+lzop -d xx.lzo
+
+----
