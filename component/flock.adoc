@@ -3,5 +3,5 @@
 
 [source,shell]
 ----
-flock -w 600 docker-compose.yml -c 'docker-compose build --no-cache lw-file && docker-compose up -d nginx'
+flock -w 600 docker-compose.yml -c 'docker-compose build --no-cache nginx && docker-compose up -d nginx'
 ----
