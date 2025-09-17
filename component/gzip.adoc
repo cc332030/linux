@@ -11,6 +11,10 @@ gzip nginx.log
 [source,shell script]
 ----
 gzip -d nginx.log.gz
+
+# 不支持 -k 时保留源文件
+gzip -cd file.txt.gz > file.txt
+zcat file.txt.gz > file.txt
 ----
 
 == 参数
