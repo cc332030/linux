@@ -1,4 +1,5 @@
 
+
 .run: &run
   push:
     - services:
@@ -16,7 +17,7 @@
           script: docker push ${IMAGE_TAG}
 
 "(main|master)":
-  pull_request:
-    - <<: *run
   push:
+    - <<: *run
+  pull_request:
     - <<: *run
