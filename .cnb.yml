@@ -1,6 +1,5 @@
 
-
-.run: &run
+.build: &build
   push:
     - services:
         - docker
@@ -18,6 +17,6 @@
 
 "(main|master)":
   push:
-    - <<: *run
+    - <<: *build
   pull_request:
-    - <<: *run
+    - <<: *build
