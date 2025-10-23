@@ -1,0 +1,25 @@
+
+= netstat
+
+== linux
+
+[source,shell]
+----
+netstat -anop | grep 80
+----
+
+== docker
+
+容器内没有 netstat 命令时
+
+[source,shell]
+----
+
+PORT_FIND=8080
+
+DOCKER_INSTANCE_NAME=nginx
+
+DOCKER_INSTANCE_ID=$(docker inspect -f '{{.State.Pid}}' nginx)
+nsenter -t ${DOCKER_INSTANCE_ID} -n netstat -anop | grep :${PORT_FIND}
+
+----
