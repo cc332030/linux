@@ -1,0 +1,12 @@
+
+= 移除权限
+
+[source,shell]
+----
+
+set path="C:\Users\Administrator\.ssh"
+icacls %path% /inheritance:r /t
+icacls %path% /grant:r "%USERNAME%:F" /t
+icacls %path% /remove:g "Users" "Authenticated Users" "Everyone" /t
+
+----
