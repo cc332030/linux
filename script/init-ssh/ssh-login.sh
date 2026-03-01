@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# https://github.com/cc332030/linux/raw/refs/heads/master/script/init-ssh/ssh-login.sh
+# curl -sL https://github.com/cc332030/linux/raw/refs/heads/master/script/init-ssh/ssh-login.sh | sh
 
 KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOpdS1sNug+B1QHIlk+lBKXaT81wEQgLvF82OFkA0FQI c332030"
 
