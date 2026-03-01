@@ -1,2 +1,6 @@
 
-echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOpdS1sNug+B1QHIlk+lBKXaT81wEQgLvF82OFkA0FQI c332030" >> ~/.ssh/authorized_keys
+KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOpdS1sNug+B1QHIlk+lBKXaT81wEQgLvF82OFkA0FQI c332030"
+
+if ! grep -qF "$KEY" ~/.ssh/authorized_keys 2>/dev/null; then
+    echo "$KEY" >> ~/.ssh/authorized_keys
+fi
