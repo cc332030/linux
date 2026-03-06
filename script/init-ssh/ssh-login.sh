@@ -7,3 +7,5 @@ KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOpdS1sNug+B1QHIlk+lBKXaT81wEQgLvF82OFk
 if ! grep -qF "$KEY" ~/.ssh/authorized_keys 2>/dev/null; then
     echo "$KEY" >> ~/.ssh/authorized_keys
 fi
+
+cat ~/.ssh/authorized_keys
