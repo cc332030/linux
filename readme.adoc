@@ -5,7 +5,6 @@
 ----
 docker run \
   -it \
-  --rm \
   -v .:/data \
   -w /data \
   ubuntu \
