@@ -5,6 +5,8 @@
 ----
 docker run \
   -it \
+  -e DEBIAN_FRONTEND=noninteractive \
+  -e TZ=Asia/Shanghai \
   -v ~/dl:/data \
   -w /data \
   ubuntu \
