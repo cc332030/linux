@@ -4,7 +4,8 @@
 [source,shell]
 ----
 docker run \
-  -it --rm \
+  -it \
+  --rm \
   -v .:/data \
   -w /data \
   ubuntu \
