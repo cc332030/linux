@@ -7,7 +7,7 @@ docker run \
   -it \
   -e DEBIAN_FRONTEND=noninteractive \
   -e TZ=Asia/Shanghai \
-  -v ~/dl:/data \
+  -v /home/program/nginx/html/dl:/data \
   -w /data \
   ubuntu \
   /bin/bash
