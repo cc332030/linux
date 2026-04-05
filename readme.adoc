@@ -1,6 +1,16 @@
 
 = linux
 
+[source,shell]
+----
+docker run \
+  -it --rm \
+  -v .:/data \
+  -w /data \
+  ubuntu \
+  /bin/bash
+----
+
 查看版本
 [source,shell script]
 ----
