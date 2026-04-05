@@ -5,10 +5,14 @@
 ----
 docker run \
   -it \
-  -v .:/data \
+  -v ~/dl:/data \
   -w /data \
   ubuntu \
   /bin/bash
+
+apt update -y \
+  && apt upgrade -y
+
 ----
 
 查看版本
