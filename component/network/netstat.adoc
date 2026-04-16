@@ -5,6 +5,21 @@
 
 [source,shell]
 ----
+# 1. 标准写法（推荐）
+sudo netstat -tulnp | grep :8090
+
+# 2. 用 ss（更快、更现代，推荐）
+sudo ss -tulnp | grep :8090
+
+# 3. 用 lsof（精准定位端口进程），显示所有连接
+sudo lsof -i :8090
+
+----
+
+== windows
+
+[source,shell]
+----
 netstat -anop | grep 80
 ----
 
